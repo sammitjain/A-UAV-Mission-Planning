@@ -52,7 +52,7 @@ StartY=106;
 %Generating goal nodes, which is represented by a matrix. Several goals can be speciefied, in which case the pathfinder will find the closest goal. 
 %a cell with the value 1 represent a goal cell
 GoalRegister=int8(zeros(size(rad_map2)));
-GoalRegister(226,557)=1;
+GoalRegister(298,552)=1;
 
 %Number of Neighboors one wants to investigate from each cell. A larger
 %number of nodes means that the path can be alligned in more directions. 
@@ -172,4 +172,9 @@ title('Connecting distance=1')
 end
 end
 
+%% Conversion algorithm
+top_left = [42.64595 36.08668]; %Got this from STK cursor
+bottom_right = [19.18550 110.76360]; %Got this from STK cursor
 
+converted_points = [bottom_right(1)+(size(rad_map2,1)-OptimalPath(:,1)).*(top_left(1)-bottom_right(1))/size(rad_map2,1) top_left(2)+(bottom_right(2)-top_left(2)).*OptimalPath(:,2)/size(rad_map2,2)];
+%%
