@@ -178,3 +178,10 @@ bottom_right = [19.18550 110.76360]; %Got this from STK cursor
 
 converted_points = [bottom_right(1)+(size(rad_map2,1)-OptimalPath(:,1)).*(top_left(1)-bottom_right(1))/size(rad_map2,1) top_left(2)+(bottom_right(2)-top_left(2)).*OptimalPath(:,2)/size(rad_map2,2)];
 %%
+STK_instr = fopen('STK_instr.txt','a');
+%formatSpec = 'X is %4.4f degrees lat and %4.4f degrees long\n';
+formatSpec = 'AddWaypoint */Aircraft/MyAircraft_Con DetTimeAccFromVel %4.4f %4.4f 11000 257.22222\n';
+for i = 1:size(converted_points,1)
+    fprintf(STK_instr,formatSpec,converted_points(i,1),converted_points(i,2));
+end
+fclose(STK_instr);
