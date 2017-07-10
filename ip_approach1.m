@@ -7,43 +7,8 @@ rad_map = rad_map(:,:,1);
 rad_map2 = int8(rad_map<127);
 %%% Generating a MAP
 %1 represents an object that the path cannot penetrate, zero is a free path
-%MAP=int8(zeros(300,300));
-MAP = rad_map2;
-% MAP(1:64,1)=1;
-% MAP(120,3:100)=1;
-% MAP(125:128,40:60)=1;
-% MAP(120:128,100:120)=1;
-% MAP(126,100:118)=0;
-% MAP(120:126,118)=0;
-% MAP(100:120,100)=1;
-% MAP(114:124,112:118)=0;
-% MAP(1,1:128)=1;
-% MAP(128,1:128)=1;
-% MAP(100,1:130)=1;
-% MAP(50,28:128)=1;
-% MAP(20:30,50)=1;
-% MAP(1:128,1)=1;
-% MAP(1:65,128)=1;
-% MAP(1,1:128)=1;
-% MAP(128,1:128)=1;
-% MAP(10,1:50)=1;
-% MAP(25,1:50)=1;
-% MAP(40,40:50)=1;
-% MAP(40,40:45)=1;
-% MAP(80,20:40)=1;
-% MAP(80:100,40)=1;
-% MAP(80:100,120)=1;
-% MAP(120:122,120:122)=1;
-% MAP(120:122,20:25)=1;
-% MAP(120:122,10:11)=1;
-% MAP(125:128,10:11)=1;
-% MAP(100:110,30:40)=1;
-% MAP(1:20,100:128)=1;
-% MAP(10:20,80:128)=1;
-% MAP(20:40,80:90)=1;
-% MAP(1:40,90:90)=1;
-% MAP(100:105,70:80)=1;
 
+MAP = rad_map2;
 
 %Start Positions
 StartX=476;
@@ -84,11 +49,6 @@ else
  h=msgbox('Sorry, No path exists to the Target!','warn');
  uiwait(h,5);
  end
-
-
-
-
-
 
 
 
@@ -179,7 +139,7 @@ bottom_right = [19.18550 110.76360]; %Got this from STK cursor
 converted_points = [bottom_right(1)+(size(rad_map2,1)-OptimalPath(:,1)).*(top_left(1)-bottom_right(1))/size(rad_map2,1) top_left(2)+(bottom_right(2)-top_left(2)).*OptimalPath(:,2)/size(rad_map2,2)];
 %%
 STK_instr = fopen('STK_instr.txt','a');
-%formatSpec = 'X is %4.4f degrees lat and %4.4f degrees long\n';
+
 formatSpec = 'AddWaypoint */Aircraft/MyAircraft_Con DetTimeAccFromVel %4.4f %4.4f 11000 257.22222\n';
 for i = 1:size(converted_points,1)
     fprintf(STK_instr,formatSpec,converted_points(i,1),converted_points(i,2));
