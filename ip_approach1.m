@@ -1,5 +1,4 @@
 %GET THE INPUT DATA FROM PREPROCESS2 REMEMBER. IMPORTANT
-%Example on the use of AStar Algorithm in an occupancy grid. 
 clear
 
 rad_map = imread('C:\Users\Sammit\Downloads\DRDO_Confidential\processed.jpg');
