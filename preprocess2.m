@@ -1,5 +1,5 @@
 
-TestImg = imread('C:\Users\Sammit\Documents\STK 11 (x64)\STK_Fundamentals\snap4_2.tif');  %Path of the image file
+TestImg = imread('assets/snap4_2.tif');  %Path of the image file
 
 %TestImg = imadjust(TestImg,[0 1],[1 0]);
 TestImg_R = TestImg(:,:,1);
@@ -9,12 +9,12 @@ TestImg_B = TestImg(:,:,3);
 chosen_points = impixel(TestImg); 
 MAXC = max(chosen_points);
 MINC = min(chosen_points);
-r_max = MAXC(1) + 1;
-r_min = MINC(1) - 1;
-g_max = MAXC(2) + 1;
-g_min = MINC(2) - 1;
-b_max = MAXC(3) + 1;
-b_min = MINC(3) - 1;
+r_max = MAXC(1) + 1; %256
+r_min = MINC(1) - 1; %254
+g_max = MAXC(2) + 1; %1
+g_min = MINC(2) - 1; %0
+b_max = MAXC(3) + 1; %1
+b_min = MINC(3) - 1; %0
 
 %Add case where max or min becomes 255 or 0 respectively
 
@@ -24,8 +24,9 @@ OutImg = TestImg_R<r_max & TestImg_R>r_min & TestImg_G<g_max & TestImg_G>g_min &
 % imshow(TestImg);
 % subplot(1,2,2);
 %imshow(OutImg);
+imshow(OutImg);
 OutImg = OutImg~=1;
-imwrite(OutImg,'C:\Users\Sammit\Downloads\DRDO_Confidential\processed.jpg')
+imwrite(OutImg,'assets/processed.jpg')
 % uicontrol('Style', 'text',...
 %        'String', 'Using High Contrast Images',... %replace something with the text you want
 %        'Units','normalized',...

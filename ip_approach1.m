@@ -1,7 +1,7 @@
 %GET THE INPUT DATA FROM PREPROCESS2 REMEMBER. IMPORTANT
 clear
 
-rad_map = imread('C:\Users\Sammit\Downloads\DRDO_Confidential\processed.jpg');
+rad_map = imread('assets/processed.jpg');
 rad_map = rad_map(:,:,1);
 rad_map2 = int8(rad_map<127);
 %%% Generating a MAP
@@ -34,7 +34,7 @@ OptimalPath=ASTARPATH(StartX,StartY,MAP,GoalRegister,Connecting_Distance)
 
 if size(OptimalPath,2)>1
 figure(10)
-imagesc((MAP))
+imagesc((MAP)) %Generate image from matrix
     colormap(flipud(gray));
 
 hold on
@@ -136,8 +136,11 @@ top_left = [42.64595 36.08668]; %Got this from STK cursor
 bottom_right = [19.18550 110.76360]; %Got this from STK cursor
 
 converted_points = [bottom_right(1)+(size(rad_map2,1)-OptimalPath(:,1)).*(top_left(1)-bottom_right(1))/size(rad_map2,1) top_left(2)+(bottom_right(2)-top_left(2)).*OptimalPath(:,2)/size(rad_map2,2)];
+% Alternate method for obtaining points through conversion
+converted_points2 = [top_left(1)-((top_left(1)-bottom_right(1))/size(rad_map2,1)).*OptimalPath(:,1) top_left(2)+(OptimalPath(:,2).*(bottom_right(2)-top_left(2))/size(rad_map2,2))];
+
 %%
-STK_instr = fopen('STK_instr.txt','a');
+STK_instr = fopen('Results/STK_instr.txt','w');
 
 formatSpec = 'AddWaypoint */Aircraft/MyAircraft_Con DetTimeAccFromVel %4.4f %4.4f 11000 257.22222\n';
 for i = 1:size(converted_points,1)
