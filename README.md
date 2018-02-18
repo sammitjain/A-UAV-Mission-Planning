@@ -1,6 +1,21 @@
 # UAV_flight_mission_planning
 
-Some pointers for using this:
+This project involves the work I did at the *Defense Research and Development Organization (DRDO)*, New Delhi. The end product was a robust MATLAB-based tool to automatically generate UAV trajectories. The areas that my project touched: operations research, algorithms, image processing, interfacing. The tool is now being used by scientists at ISSA for less computationally expensive simulations. Software used: MATLAB and STK by AGI.
+ 
+The problem: 
+  1. Currently, in most places including DRDO, UAV trajectories are NOT mapped automatically before hand and multiple simulations are performed to find a path that avoids enemy radars (modelled as Domes). Thus, there is a need to find a more accurate and computationally inexpensive solution for the same.
+  2. The second issue is that there exists no functional tool for linking MATLAB/other programming suites and the simulations software - STK. There is a plugin offered by AGI, which doesn't seem to work in our case. 
+
+My approach (now a working solution):
+  1. Use the geo-map from the simulations software STK, and set up the scenario with starting point, ending point, and dome-shaped radars.
+  2. Import the image into MATLAB and use image pre-processing algorithms so that the A* algorithm for cost-optimization can be applied.
+  3. Use color codes for costs and color thresholding algorithms to differentiate between regions that a UAV can and cannot go through.
+  4. Find the required lat-long coordinates in MATLAB
+  5. *IMPORTANT* STK has a provision to take HTML commands for initializing path points for a UAV. We make use of this exploit and generate *HTML* commands as printed text, from the MATLAB application.
+  6. These commands are then fed to STK directly (simply copy-pasting) and we have thus solved the problem.
+
+Please feel free to write to me at sammit.bitspilani@gmail.com for any queries regarding this.
+Some pointers for using this repository:
 
 (@) Currently working approach:
   1. Use STK to generate snap of the scenario to be evaluated. Use .tif for better results
