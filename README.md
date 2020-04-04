@@ -1,9 +1,9 @@
 # UAV_flight_mission_planning
 
-This project involves the work I did at the *Defense Research and Development Organization (DRDO)*, New Delhi. The end product was a robust MATLAB-based tool to automatically generate UAV trajectories. The areas that my project touched: operations research, algorithms, image processing, interfacing. The tool is now being used by scientists at ISSA for less computationally expensive simulations. Software used: MATLAB and STK by AGI.
+This project involves the work I did for [removed name for confidentiality, calling it ORG from now]. The end product was a robust MATLAB-based tool to automatically generate UAV trajectories. The areas that my project touched: operations research, algorithms, image processing, interfacing. The tool is now being used by scientists at [ORG] for less computationally expensive simulations. Software used: MATLAB and STK by AGI.
  
 The problem: 
-  1. Currently, in most places including DRDO, UAV trajectories are NOT mapped automatically before hand and multiple simulations are performed to find a path that avoids enemy radars (modelled as Domes). Thus, there is a need to find a more accurate and computationally inexpensive solution for the same.
+  1. Currently, in most places including [ORG], UAV trajectories are NOT mapped automatically before hand and multiple simulations are performed to find a path that avoids enemy radars (modelled as Domes). Thus, there is a need to find a more accurate and computationally inexpensive solution for the same.
   2. The second issue is that there exists no functional tool for linking MATLAB/other programming suites and the simulations software - STK. There is a plugin offered by AGI, which doesn't seem to work in our case. 
 
 My approach (now a working solution):
