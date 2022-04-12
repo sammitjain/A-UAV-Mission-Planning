@@ -24,6 +24,7 @@ Some pointers for using this repository:
   3. Run ip_approach1.m and feed it the path of the processed image.
 
 ## Additional notes
+* Please note that any references to geographical locations are purely for representation and do not reflect or substantiate any personal or professional views. 
 * After creating the plot in MATLAB, use any photo editing software(e.g. Photoshop) to overlay it onto original image.
 * Currently working on conversion of waypoints according to scale and feeding them to STK
 * Coordinate Conversion algorithm added. Use the top-left and bottom right lat-long coordinates to suitably scale and translate the coordinates. (NOTE: Images have their origin on the top left and coordinates traditionally start from bottom left. Therefore, latitude needed to be subtracted to invert it, in a sense)
